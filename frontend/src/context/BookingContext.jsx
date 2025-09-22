@@ -5,8 +5,9 @@ const BookingContext = createContext();
 
 export function BookingProvider({ children }) {
   const [bookings, setBookings] = useState([]);
+  const [doctors, setDoctors] = useState({}); // { "Dr. A": true, "Dr. B": false }
 
-  // Add booking (prevent duplicates same day)
+  // Add booking (with doctorname)
   const addBooking = (booking) => {
     const exists = bookings.some(
       (b) =>
@@ -14,25 +15,28 @@ export function BookingProvider({ children }) {
         b.condition === booking.condition &&
         b.date === booking.date
     );
-    if (!exists) {
-      setBookings([...bookings, booking]);
-    } else {
+    if (exists) {
       alert("⚠️ This patient is already registered today!");
+      return;
     }
+
+    // Ensure doctorname is set
+    const doctorname = booking.doctorname || booking.doctor || "";
+    const newBooking = { ...booking, doctorname };
+    setBookings((prev) => [...prev, newBooking]);
   };
 
-  // Call next patient
+  // Move to next patient
   const nextPatient = () => {
     if (bookings.length > 0) {
-      const [, ...rest] = bookings;
-      setBookings(rest);
+      setBookings((prev) => prev.slice(1));
     }
   };
 
-  // Clear all queue
+  // Clear entire queue
   const clearQueue = () => setBookings([]);
 
-  // Queue status for token
+  // Queue status
   const getQueueStatus = (token) => {
     const index = bookings.findIndex((b) => b.token === token);
     if (index === -1) return "❌ Not in queue";
@@ -40,15 +44,47 @@ export function BookingProvider({ children }) {
     return `⏳ Waiting... ${index} ahead`;
   };
 
+  // Set doctor availability
+  const setDoctorAvailability = (doctorName, available) => {
+    setDoctors((prev) => ({ ...prev, [doctorName]: available }));
+  };
+
+  const isDoctorAvailable = (doctorName) => doctors[doctorName] ?? true;
+
+  // Update doctorname for all bookings
+  const updateDoctorName = (oldName, newName) => {
+    setBookings((prev) =>
+      prev.map((b) =>
+        b.doctor === oldName || b.doctorname === oldName
+          ? { ...b, doctorname: newName }
+          : b
+      )
+    );
+
+    // Update doctors mapping
+    setDoctors((prev) => {
+      const newDoctors = { ...prev };
+      if (oldName in newDoctors) {
+        newDoctors[newName] = newDoctors[oldName];
+        delete newDoctors[oldName];
+      }
+      return newDoctors;
+    });
+  };
+
   return (
     <BookingContext.Provider
       value={{
         bookings,
-        setBookings,     // For DoctorDashboard to update from backend
+        setBookings,
         addBooking,
         nextPatient,
         clearQueue,
         getQueueStatus,
+        doctors,
+        setDoctorAvailability,
+        isDoctorAvailable,
+        updateDoctorName,
       }}
     >
       {children}

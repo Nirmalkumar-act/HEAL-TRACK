@@ -1,35 +1,32 @@
 // src/pages/DoctorDashboard.jsx
 import React, { useState, useMemo, useEffect } from "react";
 import { useBooking } from "../context/BookingContext";
-import api from "../api/api"; // Axios instance
+import api from "../api/api";
 import "../styles/DoctorDashboard.css";
 
 export default function DoctorDashboard() {
-  const { bookings, setBookings } = useBooking();
+  const { bookings, setBookings, doctors, setDoctorAvailability } = useBooking();
   const [search, setSearch] = useState("");
   const [filterDoctor, setFilterDoctor] = useState("");
   const [time, setTime] = useState(new Date());
 
-  // Live clock
   useEffect(() => {
     const interval = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(interval);
   }, []);
 
-  // Fetch bookings from backend
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const res = await api.get("/bookings"); // make sure backend endpoint exists
+        const res = await api.get("/bookings");
         setBookings(res.data || []);
       } catch (err) {
-        console.error("Error fetching bookings:", err);
+        console.error(err);
       }
     };
     fetchBookings();
   }, [setBookings]);
 
-  // Gender icons
   const genderIcon = (gender) => {
     if (gender === "Male") return "♂";
     if (gender === "Female") return "♀";
@@ -37,7 +34,6 @@ export default function DoctorDashboard() {
     return "❓";
   };
 
-  // Doctor visit counts
   const doctorVisits = useMemo(() => {
     const counts = {};
     bookings.forEach((b) => {
@@ -46,7 +42,8 @@ export default function DoctorDashboard() {
     return counts;
   }, [bookings]);
 
-  // Search + Filter
+  const allDoctors = [...new Set(bookings.map((b) => b.doctor))];
+
   const filteredBookings = bookings.filter((b) => {
     const matchesName = b.name.toLowerCase().includes(search.toLowerCase());
     const matchesDoctor = filterDoctor ? b.doctor === filterDoctor : true;
@@ -58,7 +55,33 @@ export default function DoctorDashboard() {
       <h1>👨‍⚕️ Doctor Dashboard</h1>
       <p className="clock">🕒 {time.toLocaleDateString()} | {time.toLocaleTimeString()}</p>
 
-      {/* Summary Cards */}
+      {/* Doctors Availability */}
+      <div className="doctor-availability">
+        <h2>👩‍⚕️ Doctors Availability</h2>
+        {allDoctors.map((doc) => (
+          <div key={doc} className="doctor-item">
+            <span>{doc}</span>
+            {/* Available Button */}
+            <button
+              className={`btn primary`}
+              onClick={() => setDoctorAvailability(doc, true)}
+              disabled={doctors[doc] === true}
+            >
+              Available
+            </button>
+            {/* Not Available Button */}
+            <button
+              className={`btn danger`}
+              onClick={() => setDoctorAvailability(doc, false)}
+              disabled={doctors[doc] === false}
+            >
+              Not Available
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {/* Summary */}
       <div className="doctor-summary">
         <div className="doctor-card">
           <h3>Total Patients</h3>
@@ -70,23 +93,9 @@ export default function DoctorDashboard() {
         </div>
         <div className="doctor-card">
           <h3>Doctors Active</h3>
-          <p>{Object.keys(doctorVisits).length}</p>
+          <p>{allDoctors.length}</p>
         </div>
       </div>
-
-      {/* Doctor Visit Counts */}
-      {Object.keys(doctorVisits).length > 0 && (
-        <div className="doctor-visits">
-          <h2>📊 Doctor Visit Counts</h2>
-          <ul>
-            {Object.entries(doctorVisits).map(([doc, count]) => (
-              <li key={doc}>
-                <b>{doc}</b> → {count} patient{count > 1 ? "s" : ""}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
 
       {/* Search & Filter */}
       <div className="search-filter">
@@ -96,12 +105,9 @@ export default function DoctorDashboard() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <select
-          value={filterDoctor}
-          onChange={(e) => setFilterDoctor(e.target.value)}
-        >
+        <select value={filterDoctor} onChange={(e) => setFilterDoctor(e.target.value)}>
           <option value="">All Doctors</option>
-          {Object.keys(doctorVisits).map((doc) => (
+          {allDoctors.map((doc) => (
             <option key={doc} value={doc}>{doc}</option>
           ))}
         </select>
@@ -134,7 +140,9 @@ export default function DoctorDashboard() {
                   {genderIcon(b.gender)} {b.gender}
                 </td>
                 <td>{b.condition || "N/A"}</td>
-                <td>{b.doctor}</td>
+                <td className={doctors[b.doctor] === false ? "not-available" : ""}>
+                  {b.doctor} {doctors[b.doctor] === false && "(Not Available)"}
+                </td>
                 <td>{b.time}</td>
                 <td>{b.date}</td>
               </tr>

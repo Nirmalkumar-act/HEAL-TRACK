@@ -45,7 +45,7 @@ export default function BookingConfirmation() {
             <p><b>Age:</b> {booking.age}</p>
             <p><b>Gender:</b> {booking.gender}</p>
             <p><b>Condition:</b> {booking.condition}</p>
-            <p><b>Doctor:</b> {booking.doctor}</p>
+            <p><b>Doctor:</b> {booking.doctorname || booking.doctor}</p>
             <p><b>Token Number:</b> {booking.token}</p>
             <p><b>Date:</b> {booking.date}</p>
             <p><b>Time:</b> {booking.time}</p>

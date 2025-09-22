@@ -14,6 +14,7 @@ export default function GantradeCard() {
     age: defaultPatient.age || "",
     gender: defaultPatient.gender || "",
     condition: defaultPatient.condition || "",
+    doctorname: defaultPatient.doctorname || "", // fix: initialize doctorname
     cardNo:
       defaultPatient.cardNo || "GNT-" + Math.floor(1000 + Math.random() * 9000),
     token:
@@ -29,12 +30,13 @@ export default function GantradeCard() {
     if (bookings.length > 0) {
       const patient = bookings[0];
       setForm({
-        name: patient.name,
-        age: patient.age,
-        gender: patient.gender,
-        condition: patient.condition,
-        cardNo: patient.cardNo,
-        token: patient.token,
+        name: patient.name || "",
+        age: patient.age || "",
+        gender: patient.gender || "",
+        condition: patient.condition || "",
+        doctorname: patient.doctorname || "", // fix: use patient.doctorname
+        cardNo: patient.cardNo || "GNT-" + Math.floor(1000 + Math.random() * 9000),
+        token: patient.token || "TK" + Math.floor(1000 + Math.random() * 9000),
       });
     }
   }, [bookings]);
@@ -45,11 +47,11 @@ export default function GantradeCard() {
     age: form.age,
     gender: form.gender,
     condition: form.condition,
+    doctorname: form.doctorname,
     cardNo: form.cardNo,
     token: form.token,
   });
 
-  // Optional: Save details (replace with backend call)
   const handleSave = () => {
     alert("Patient details stored successfully!");
   };
@@ -85,6 +87,12 @@ export default function GantradeCard() {
             value={form.condition}
             onChange={handleChange}
             placeholder="Condition / Symptoms"
+          />
+          <input
+            name="doctorname"
+            value={form.doctorname}
+            onChange={handleChange}
+            placeholder="Doctor Name"
           />
           <input
             name="cardNo"
@@ -128,6 +136,7 @@ export default function GantradeCard() {
             <p><b>Age:</b> {form.age || "N/A"}</p>
             <p><b>Gender:</b> {form.gender || "Other"}</p>
             <p><b>Condition:</b> {form.condition || "N/A"}</p>
+            <p><b>Doctor:</b> {form.doctorname || "N/A"}</p>
             <p><b>Card No:</b> {form.cardNo}</p>
             <p><b>Token:</b> {form.token}</p>
 

@@ -28,6 +28,71 @@
 }
 
 /* =============================
+   Doctors Availability
+   ============================= */
+.doctor-availability {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.doctor-availability h2 {
+  color: #0077b6;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.doctor-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 6px 0;
+  flex-wrap: wrap;
+}
+
+.doctor-item span {
+  font-weight: 600;
+  font-size: 1rem;
+  min-width: 120px;
+}
+
+/* Buttons */
+.doctor-item .btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.doctor-item .btn.primary {
+  background-color: #0077b6;
+  color: white;
+}
+
+.doctor-item .btn.primary:hover:not(:disabled) {
+  background-color: #0093d0;
+  transform: translateY(-2px);
+}
+
+.doctor-item .btn.danger {
+  background-color: #e63946;
+  color: white;
+}
+
+.doctor-item .btn.danger:hover:not(:disabled) {
+  background-color: #f04c5a;
+  transform: translateY(-2px);
+}
+
+.doctor-item .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =============================
    Summary Cards
    ============================= */
 .doctor-summary {
@@ -152,10 +217,19 @@
   font-weight: 600;
   color: #0077b6;
 }
+
 /* Gender colors */
 .gender.male { color: #0077b6; font-weight: 600; }
 .gender.female { color: #e91e63; font-weight: 600; }
 .gender.other { color: #9c27b0; font-weight: 600; }
+
+/* Highlight Not Available Doctor */
+td.not-available {
+  color: #e63946;
+  font-weight: 600;
+  background: #ffe6e6;
+  border-radius: 6px;
+}
 
 /* Popup notification */
 .popup {
@@ -170,7 +244,6 @@
   animation: fadeInOut 4s forwards;
   z-index: 1000;
 }
-
 
 /* =============================
    Responsive
