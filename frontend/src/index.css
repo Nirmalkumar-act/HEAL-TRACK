@@ -1,0 +1,23 @@
+/* Global styles */
+* { 
+  box-sizing: border-box; 
+  font-family: Arial, sans-serif; 
+}
+body { 
+  margin: 0; 
+  background:#f7f8fc; 
+  color:#222; 
+}
+.container { 
+  max-width: 1000px; 
+  margin: 32px auto; 
+  padding: 16px; 
+  background: #fff; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06); 
+}
+h1 { margin: 0 0 12px; }
+.row { display:flex; gap:16px; }
+.col { flex:1; }
+.small { font-size:0.9rem; color:#555; }
+.error { color: #b00020; margin-top:6px; }

@@ -1,0 +1,74 @@
+/* Hospital Tracker Page */
+.tracker-container {
+  max-width: 600px;
+  margin: 50px auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+.tracker-container h1 {
+  font-size: 2rem;
+  color: #1558b0;
+  margin-bottom: 10px;
+}
+
+.tracker-container p {
+  font-size: 1.05rem;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.tracker-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.tracker-form label {
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+}
+
+.tracker-form input,
+.tracker-form select {
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.3s ease;
+}
+
+.tracker-form input:focus,
+.tracker-form select:focus {
+  outline: none;
+  border-color: #1a73e8;
+}
+
+.find-btn {
+  background: linear-gradient(90deg, #1a73e8, #1558b0);
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.find-btn:hover {
+  background: #0f4fa3;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .tracker-container {
+    margin: 20px;
+    padding: 20px;
+  }
+}

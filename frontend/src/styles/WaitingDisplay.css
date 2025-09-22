@@ -1,0 +1,261 @@
+/* =============================
+   Waiting Room Display Styles
+   ============================= */
+.waiting-display {
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: auto;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  color: #2c3e50;
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.waiting-display h1 {
+  font-size: 2.2rem;
+  color: #0077b6;
+  margin-bottom: 10px;
+  animation: slideDown 0.6s ease;
+}
+
+.clock {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  color: #444;
+}
+
+.empty {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 20px;
+}
+
+/* =============================
+   Now Serving Card
+   ============================= */
+.now-serving-card {
+  background: linear-gradient(135deg, #0077b6, #00b4d8);
+  color: white;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 14px;
+  box-shadow: 0px 6px 16px rgba(0,0,0,0.15);
+  text-align: left;
+  animation: fadeIn 0.5s ease-in-out;
+}
+.now-serving-card h2 {
+  margin-bottom: 12px;
+}
+.now-serving-card p {
+  margin: 6px 0;
+  font-size: 1rem;
+}
+.now-serving-card .btn {
+  margin-top: 15px;
+}
+
+/* =============================
+   Table Styles
+   ============================= */
+.waiting-display table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 6px 18px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
+}
+.waiting-display thead {
+  background: linear-gradient(135deg, #0077b6, #00b4d8);
+  color: #fff;
+}
+.waiting-display thead th {
+  padding: 14px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.waiting-display tbody td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+.waiting-display tbody tr:hover {
+  background: #f9f9f9;
+}
+
+.active-row {
+  background: #e6f7ff !important;
+  font-weight: 600;
+}
+
+/* Status Badges */
+.status {
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+.status.active {
+  background: #00b894;
+  color: white;
+}
+.status.waiting {
+  background: #ffeaa7;
+  color: #333;
+}
+
+/* =============================
+   Controls
+   ============================= */
+.queue-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  transition: all 0.3s ease;
+}
+.btn.primary {
+  background: #0077b6;
+  color: white;
+}
+.btn.primary:hover {
+  background: #005f87;
+}
+.btn.danger {
+  background: #e74c3c;
+  color: white;
+}
+.btn.danger:hover {
+  background: #c0392b;
+}
+.waiting-count {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #0077b6;
+}
+
+.queue-filters {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 15px 0;
+}
+.queue-filters input,
+.queue-filters select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #ccc;
+  font-size: 0.95rem;
+}
+.queue-filters input:focus,
+.queue-filters select:focus {
+  border-color: #0077b6;
+  outline: none;
+}
+
+.popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #0077b6;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 10px;
+  animation: fadeInOut 4s ease forwards;
+}
+
+/* Gender colors */
+.gender.male { color: #0077b6; font-weight: 600; }
+.gender.female { color: #e91e63; font-weight: 600; }
+.gender.other { color: #9c27b0; font-weight: 600; }
+
+/* Popup notification */
+.popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #0077b6;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  animation: fadeInOut 4s forwards;
+  z-index: 1000;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(20px); }
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(20px); }
+  15% { opacity: 1; transform: translateY(0); }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(20px); }
+}
+
+/* =============================
+   Responsive
+   ============================= */
+@media (max-width: 768px) {
+  .waiting-display table,
+  .waiting-display thead,
+  .waiting-display tbody,
+  .waiting-display th,
+  .waiting-display td,
+  .waiting-display tr {
+    display: block;
+    width: 100%;
+  }
+
+  .waiting-display thead {
+    display: none;
+  }
+
+  .waiting-display tbody tr {
+    margin-bottom: 15px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0px 3px 8px rgba(0,0,0,0.05);
+  }
+
+  .waiting-display tbody td {
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 10px;
+    font-size: 0.95rem;
+  }
+
+  .waiting-display tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #0077b6;
+  }
+}
+
+/* =============================
+   Animations
+   ============================= */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,17 @@
+.scan-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.scan-row input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.scan-row .btn {
+  white-space: nowrap;
+}

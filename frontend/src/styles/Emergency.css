@@ -1,0 +1,262 @@
+/* === Global Container === */
+.emergency-container {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  border-radius: 12px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* === Banner === */
+.banner {
+  width: 100%;
+  height: 200px;
+  background: url("https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80")
+    no-repeat center center/cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  animation: slideIn 1s ease-in-out;
+}
+
+/* === Animations === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.6);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 15px rgba(211, 47, 47, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(211, 47, 47, 0);
+  }
+}
+
+/* === Titles === */
+.emergency-container h1 {
+  text-align: center;
+  color: #d32f2f;
+  margin: 15px 0;
+  font-size: 2.4rem;
+}
+
+.emergency-container h2 {
+  margin: 25px 0 15px;
+  color: #222;
+  font-size: 1.6rem;
+  border-left: 5px solid #1976d2;
+  padding-left: 10px;
+}
+
+/* === Live Clock === */
+.live-clock {
+  text-align: right;
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* === Search Box === */
+.search-box {
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+/* === Hospital Cards Grid === */
+.emergency-container ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+}
+
+.emergency-container li {
+  background: #fff;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.emergency-container li:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.highlight {
+  border: 2px solid #43a047;
+  background: #e8f5e9;
+}
+
+/* === Buttons === */
+button {
+  margin: 6px 5px 0 0;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+/* Call */
+button.call-btn {
+  background: linear-gradient(135deg, #43a047, #388e3c);
+  color: white;
+}
+
+button.call-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+}
+
+/* Directions */
+button.directions-btn {
+  background: linear-gradient(135deg, #1976d2, #1565c0);
+  color: white;
+}
+
+button.directions-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #2196f3, #0d47a1);
+}
+
+/* Quick Emergency Numbers */
+.emergency-numbers {
+  margin-top: 25px;
+  padding: 18px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.quick-buttons button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #f57c00, #ef6c00);
+  color: white;
+  border-radius: 8px;
+}
+
+.quick-buttons button:hover {
+  background: linear-gradient(135deg, #ff9800, #e65100);
+  transform: scale(1.03);
+}
+
+/* Share Location */
+.share-location {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.share-location button {
+  background: linear-gradient(135deg, #0288d1, #0277bd);
+  color: white;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.share-location button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #03a9f4, #01579b);
+}
+
+/* SOS Button */
+.sos-container {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.sos-button {
+  background: linear-gradient(135deg, #e53935, #b71c1c);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 16px 32px;
+  border-radius: 50px;
+  animation: pulse 2s infinite;
+}
+
+.sos-button:hover {
+  transform: scale(1.1);
+}
+
+/* First Aid Tips */
+.emergency-tips {
+  margin-top: 25px;
+  padding: 18px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.emergency-tips ul {
+  list-style: disc inside;
+  padding-left: 15px;
+}
+
+.emergency-tips li {
+  margin: 8px 0;
+  color: #333;
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  .emergency-container {
+    padding: 15px;
+  }
+
+  .banner {
+    height: 150px;
+  }
+
+  button {
+    width: 100%;
+    margin: 8px 0;
+  }
+
+  .sos-button {
+    width: 100%;
+  }
+}
