@@ -1,0 +1,16 @@
+form { margin-top: 8px; }
+label { font-weight: bold; display:block; margin-top:10px; }
+.input, select { 
+  width:100%; 
+  padding:8px; 
+  border-radius:6px; 
+  border:1px solid #ddd; 
+  margin-top:6px; 
+}
+.button.primary { 
+  background:#2f8bfd; 
+  color:white; 
+}
+.button.primary:hover { 
+  background:#1c6adb; 
+}

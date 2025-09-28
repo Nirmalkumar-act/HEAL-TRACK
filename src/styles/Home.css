@@ -1,0 +1,225 @@
+.home {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  background: #000;
+}
+
+.hero-slider {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.7s cubic-bezier(.22, .9, .23, 1);
+}
+
+.hero-slide {
+  flex: 0 0 100%;
+  height: 100%;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  text-align: center;
+  color: #111010;
+  max-width: 860px;
+  padding: 20px;
+}
+
+.hero-overlay h1 {
+  font-size: 2.6rem;
+  margin-bottom: 14px;
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.hero-overlay p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #e60c75;
+}
+
+.cta-btn {
+  background: linear-gradient(90deg, #1a73e8, #1558b0);
+  border: none;
+  color: #fff;
+  padding: 12px 26px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.05rem;
+  box-shadow: 0 8px 24px rgba(21, 88, 176, 0.25);
+  transition: all 0.3s ease;
+}
+.cta-btn:hover {
+  transform: translateY(-3px);
+  background: #0f4fa3;
+}
+
+/* Arrows */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slider-arrow.left { left: 14px; }
+.slider-arrow.right { right: 14px; }
+.slider-arrow:hover { background: rgba(0, 0, 0, 0.65); }
+
+/* Dots */
+.slider-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  display: flex;
+  gap: 10px;
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.dot.active {
+  background: #ffd700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* ABOUT SECTION */
+.about {
+  padding: 50px 20px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  color: #1558b0;
+}
+.about p {
+  font-size: 1.05rem;
+  color: #444;
+  margin-bottom: 18px;
+}
+.about-features p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* SERVICES */
+.services {
+  padding: 50px 20px;
+  background: #f8f9fa;
+}
+.service-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  max-width: 1100px;
+  margin: 20px auto 0;
+}
+.service-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.service-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+.service-card h3 {
+  padding: 14px 16px 6px;
+  color: #1558b0;
+  font-size: 1.2rem;
+}
+.service-card p {
+  padding: 0 16px 20px;
+  color: #444;
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* ============================= */
+/* RESPONSIVE MEDIA QUERIES */
+/* ============================= */
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .hero { height: 360px; }
+  .hero-overlay h1 { font-size: 2.2rem; }
+  .hero-overlay p { font-size: 1rem; }
+  .cta-btn { padding: 10px 22px; font-size: 0.95rem; }
+  .service-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+}
+
+/* Small tablets & large phones (600px and below) */
+@media (max-width: 600px) {
+  .hero { height: 320px; }
+  .hero-overlay { padding: 12px; max-width: 95%; }
+  .hero-overlay h1 { font-size: 1.8rem; }
+  .hero-overlay p { font-size: 0.95rem; }
+  .cta-btn { font-size: 0.9rem; padding: 8px 18px; }
+  .slider-arrow { width: 38px; height: 38px; font-size: 18px; }
+  .dot { width: 10px; height: 10px; }
+  .about h2 { font-size: 1.6rem; }
+  .about p { font-size: 0.95rem; }
+}
+
+/* Phones (480px and below) */
+@media (max-width: 480px) {
+  .hero { height: 280px; }
+  .hero-overlay h1 { font-size: 1.6rem; }
+  .hero-overlay p { font-size: 0.9rem; }
+  .cta-btn { font-size: 0.85rem; padding: 8px 16px; }
+  .service-card h3 { font-size: 1rem; }
+  .service-card p { font-size: 0.9rem; }
+}
+
+/* Extra small devices (360px and below) */
+@media (max-width: 360px) {
+  .hero { height: 240px; }
+  .hero-overlay h1 { font-size: 1.4rem; }
+  .hero-overlay p { font-size: 0.85rem; }
+  .cta-btn { font-size: 0.8rem; padding: 6px 14px; }
+}

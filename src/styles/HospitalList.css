@@ -1,0 +1,17 @@
+.list { margin-top: 12px; }
+.card {
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  background: #fafafa;
+}
+.card button {
+  margin-top: 6px;
+  background: #2f8bfd;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}

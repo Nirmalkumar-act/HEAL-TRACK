@@ -1,0 +1,318 @@
+/* =============================
+   Doctor Dashboard Styles
+   ============================= */
+.doctor-dashboard {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  color: #2c3e50;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.doctor-dashboard h1 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #0077b6;
+  animation: slideDown 0.6s ease;
+}
+
+.clock {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #444;
+}
+
+/* =============================
+   Doctors Availability
+   ============================= */
+.doctor-availability {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.doctor-availability h2 {
+  color: #0077b6;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.doctor-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 6px 0;
+  flex-wrap: wrap;
+}
+
+.doctor-item span {
+  font-weight: 600;
+  font-size: 1rem;
+  min-width: 120px;
+}
+
+/* Buttons */
+.doctor-item .btn {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.doctor-item .btn.primary {
+  background-color: #0077b6;
+  color: white;
+}
+
+.doctor-item .btn.primary:hover:not(:disabled) {
+  background-color: #0093d0;
+  transform: translateY(-2px);
+}
+
+.doctor-item .btn.danger {
+  background-color: #e63946;
+  color: white;
+}
+
+.doctor-item .btn.danger:hover:not(:disabled) {
+  background-color: #f04c5a;
+  transform: translateY(-2px);
+}
+
+.doctor-item .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =============================
+   Summary Cards
+   ============================= */
+.doctor-summary {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.doctor-card {
+  background: linear-gradient(135deg, #0077b6, #00b4d8);
+  color: white;
+  padding: 20px 26px;
+  border-radius: 14px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+  text-align: center;
+  min-width: 180px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.doctor-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 8px 18px rgba(0,0,0,0.2);
+}
+.doctor-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.doctor-card p {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: bold;
+}
+
+/* =============================
+   Doctor Visits
+   ============================= */
+.doctor-visits {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.doctor-visits h2 {
+  color: #0077b6;
+  margin-bottom: 12px;
+}
+.doctor-visits ul {
+  list-style: none;
+  padding: 0;
+}
+.doctor-visits li {
+  margin: 6px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* =============================
+   Search + Filter
+   ============================= */
+.search-filter {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+.search-filter input,
+.search-filter select {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  outline: none;
+  font-size: 1rem;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+.search-filter input:focus,
+.search-filter select:focus {
+  border-color: #0077b6;
+  box-shadow: 0px 4px 12px rgba(0,119,182,0.25);
+}
+
+/* =============================
+   Patients Table
+   ============================= */
+.doctor-dashboard table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.doctor-dashboard thead {
+  background: linear-gradient(135deg, #0077b6, #00b4d8);
+  color: #fff;
+}
+.doctor-dashboard thead th {
+  padding: 14px;
+  font-size: 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.doctor-dashboard tbody td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+  color: #333;
+}
+.doctor-dashboard tbody tr:hover {
+  background: #f9f9f9;
+  transition: background 0.3s ease;
+}
+
+/* Highlight Active Patient */
+.active-row {
+  background: #e6f7ff !important;
+}
+.active-row td {
+  font-weight: 600;
+  color: #0077b6;
+}
+
+/* Gender colors */
+.gender.male { color: #0077b6; font-weight: 600; }
+.gender.female { color: #e91e63; font-weight: 600; }
+.gender.other { color: #9c27b0; font-weight: 600; }
+
+/* Highlight Not Available Doctor */
+td.not-available {
+  color: #e63946;
+  font-weight: 600;
+  background: #ffe6e6;
+  border-radius: 6px;
+}
+
+/* Popup notification */
+.popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #0077b6;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  animation: fadeInOut 4s forwards;
+  z-index: 1000;
+}
+
+/* =============================
+   Responsive
+   ============================= */
+@media (max-width: 768px) {
+  .doctor-dashboard table,
+  .doctor-dashboard thead,
+  .doctor-dashboard tbody,
+  .doctor-dashboard th,
+  .doctor-dashboard td,
+  .doctor-dashboard tr {
+    display: block;
+    width: 100%;
+  }
+
+  .doctor-dashboard thead {
+    display: none;
+  }
+
+  .doctor-dashboard tbody tr {
+    margin-bottom: 15px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .doctor-dashboard tbody td {
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 10px;
+    font-size: 0.95rem;
+  }
+
+  .doctor-dashboard tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #0077b6;
+  }
+}
+
+/* =============================
+   Animations
+   ============================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(20px); }
+}
