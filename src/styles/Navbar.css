@@ -247,6 +247,10 @@
 @media (max-width: 768px) {
   .navbar {
     padding: 14px 25px;
+      .navbar-links li:nth-child(3),
+  .navbar-links li:nth-child(6) {
+    display: none !important;
+  }
   }
 
   .menu-toggle {
