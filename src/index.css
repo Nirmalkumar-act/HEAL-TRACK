@@ -1,3 +1,30 @@
+/* Ensure the app takes full height */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* prevent horizontal scroll */
+}
+
+/* Make the wrapper fill the viewport */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full viewport height */
+}
+
+/* Content grows and pushes footer down */
+.main-content {
+  flex: 1;
+}
+
+/* Footer sticks at bottom without extra space */
+.footer {
+  margin-top: auto;   /* push footer to bottom */
+}
+
+
+
 /* Global styles */
 * { 
   box-sizing: border-box; 

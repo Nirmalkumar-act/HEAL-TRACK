@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useBooking } from "../context/BookingContext";
 import "../styles/QRScanner.css";
 
-QrScanner.WORKER_PATH = "/qr-scanner-worker.min.js";
+
 
 export default function QRScanner() {
   const videoRef = useRef(null);
@@ -101,22 +101,7 @@ export default function QRScanner() {
         </label>
       </div>
 
-      {/* Select doctor if QR didn't contain doctorname */}
-      {!scanResult && (
-        <div className="doctor-select">
-          <label>
-            🩺 Select Doctor:
-            <select value={selectedDoctor} onChange={(e) => setSelectedDoctor(e.target.value)}>
-              <option value="">-- Select --</option>
-              {Object.keys(doctors).map((doc) => (
-                <option key={doc} value={doc}>
-                  {doc} {doctors[doc] === false ? "(Not Available)" : ""}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-      )}
+   
 
       {scanResult && (
         <p className="scan-result">

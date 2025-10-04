@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import { AuthProvider, AuthContext } from "./context/AuthContext";
 
 // Pages
@@ -21,8 +22,7 @@ import NearbyHospitals from "./pages/NearbyHospitals";
 import GantradeCard from "./pages/GantradeCard";
 import QRScanner from "./pages/QRScanner";
 import Login from "./pages/Login";
-import  MedWaste from "./pages/MedWaste";
-
+import MedWaste from "./pages/MedWaste";
 
 // Protected Route
 const ProtectedRoute = ({ children }) => {
@@ -32,33 +32,40 @@ const ProtectedRoute = ({ children }) => {
 
 function App() {
   return (
+    
     <AuthProvider>
       <Router>
-        <Navbar />
-        <Routes>
-          {/* Public */}
-          <Route path="/login" element={<Login />} />
+        {/* App Layout Wrapper */}
+        <div className="app-wrapper">
+          <Navbar />
+          <main className="main-content">
+            <Routes>
+              {/* Public */}
+              <Route path="/login" element={<Login />} />
 
-          {/* Protected */}
-          <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-          <Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
-          <Route path="/emergency" element={<ProtectedRoute><Emergency /></ProtectedRoute>} />
-          <Route path="/services" element={<ProtectedRoute><Services /></ProtectedRoute>} />
-          <Route path="/booking" element={<ProtectedRoute><Booking /></ProtectedRoute>} />
-          <Route path="/scan" element={<ProtectedRoute><ScanId /></ProtectedRoute>} />
-          <Route path="/review" element={<ProtectedRoute><PatientReview /></ProtectedRoute>} />
-          <Route path="/dashboard" element={<ProtectedRoute><DoctorDashboard /></ProtectedRoute>} />
-          <Route path="/confirmation" element={<ProtectedRoute><Confirmation /></ProtectedRoute>} />
-          <Route path="/waiting" element={<ProtectedRoute><WaitingDisplay /></ProtectedRoute>} />
-          <Route path="/tracker" element={<ProtectedRoute><HospitalTracker /></ProtectedRoute>} />
-          <Route path="/nearby" element={<ProtectedRoute><NearbyHospitals /></ProtectedRoute>} />
-          <Route path="/gantrade" element={<ProtectedRoute><GantradeCard /></ProtectedRoute>} />
-          <Route path="/qrscanner" element={<ProtectedRoute><QRScanner /></ProtectedRoute>} />
-          <Route path="/medwaste" element={<ProtectedRoute><MedWaste /></ProtectedRoute>} />
-          {/* Fallback */}
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-        <Footer />
+              {/* Protected */}
+              <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+              <Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
+              <Route path="/emergency" element={<ProtectedRoute><Emergency /></ProtectedRoute>} />
+              <Route path="/services" element={<ProtectedRoute><Services /></ProtectedRoute>} />
+              <Route path="/booking" element={<ProtectedRoute><Booking /></ProtectedRoute>} />
+              <Route path="/scan" element={<ProtectedRoute><ScanId /></ProtectedRoute>} />
+              <Route path="/review" element={<ProtectedRoute><PatientReview /></ProtectedRoute>} />
+              <Route path="/dashboard" element={<ProtectedRoute><DoctorDashboard /></ProtectedRoute>} />
+              <Route path="/confirmation" element={<ProtectedRoute><Confirmation /></ProtectedRoute>} />
+              <Route path="/waiting" element={<ProtectedRoute><WaitingDisplay /></ProtectedRoute>} />
+              <Route path="/tracker" element={<ProtectedRoute><HospitalTracker /></ProtectedRoute>} />
+              <Route path="/nearby" element={<ProtectedRoute><NearbyHospitals /></ProtectedRoute>} />
+              <Route path="/gantrade" element={<ProtectedRoute><GantradeCard /></ProtectedRoute>} />
+              <Route path="/qrscanner" element={<ProtectedRoute><QRScanner /></ProtectedRoute>} />
+              <Route path="/medwaste" element={<ProtectedRoute><MedWaste /></ProtectedRoute>} />
+
+              {/* Fallback */}
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
       </Router>
     </AuthProvider>
   );

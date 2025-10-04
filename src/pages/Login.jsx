@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Eye, EyeOff, Sun, Moon } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import Modal from "../components/Modal";
 import "../styles/Auth.css";
 import { AuthContext } from "../context/AuthContext";
@@ -15,32 +15,27 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [remember, setRemember] = useState(!!localStorage.getItem("rememberEmail"));
   const [capsLock, setCapsLock] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const [toast, setToast] = useState("");
   const [showRegister, setShowRegister] = useState(false);
   const [forgotOpen, setForgotOpen] = useState(false);
+  const [role, setRole] = useState("User"); // ✅ Added role dropdown
 
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const passOk = password.length >= 6;
-
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-    document.documentElement.classList.toggle("dark");
-  };
 
   const doLogin = (e) => {
     e.preventDefault();
     if (!emailOk || !passOk) return;
 
-    const userData = { email };
-    login(userData); // ✅ Updates AuthContext
+    const userData = { email, role }; // ✅ include role
+    login(userData);
     localStorage.setItem("rememberEmail", remember ? email : "");
     setToast("✅ Login successful!");
-    setTimeout(() => navigate("/dashboard"), 800);
+    setTimeout(() => navigate("/"), 800);
   };
 
   return (
-    <div className={`auth-page ${darkMode ? "dark-mode" : "light-mode"}`}>
+    <div className="auth-page">
       <AnimatePresence>
         {toast && (
           <motion.div
@@ -59,11 +54,6 @@ export default function Login() {
         animate={{ opacity: 1, y: 0 }}
         className="auth-card"
       >
-        {/* Theme Toggle */}
-        <button onClick={toggleTheme} className="theme-toggle">
-          {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-        </button>
-
         <h1>Welcome to HMS</h1>
         <p className="subtitle">Login to manage hospital efficiently</p>
 
@@ -98,6 +88,16 @@ export default function Login() {
               {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
             </span>
             {capsLock && <p className="caps-warning">⚠ Caps Lock is ON</p>}
+          </div>
+
+          {/* Role Dropdown */}
+          <div className="form-group role-group">
+            <label>Role</label>
+            <select value={role} onChange={(e) => setRole(e.target.value)}>
+              <option value="User">User</option>
+              <option value="Doctor">Doctor</option>
+              <option value="Management">Management</option>
+            </select>
           </div>
 
           {/* Remember me */}
