@@ -1,9 +1,7 @@
-// src/api/api.js
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:8080/api",
-  headers: { "Content-Type": "application/json" },
+  baseURL: "http://localhost:8080/api", // ✅ must match backend mapping
 });
 
-export default api; // ✅ Must be default export
+export default api;

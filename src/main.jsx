@@ -2,13 +2,14 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
-import { BookingProvider } from "./context/BookingContext";  // import provider
+import { BookingProvider } from "./context/BookingContext";
+import { AuthProvider } from "./context/AuthContext";
 import "./index.css";
 
 createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <AuthProvider>
     <BookingProvider>
       <App />
     </BookingProvider>
-  </React.StrictMode>
+  </AuthProvider>
 );

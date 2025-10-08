@@ -83,7 +83,7 @@ export default function Navbar() {
               isActive ? "nav-link active" : "nav-link"
             }
           >
-            <FaUserMd className="nav-icon" /> Doctor Dashboard
+            <FaUserMd className="nav-icon" /> DD
           </NavLink>
         </li>
         <li>
@@ -93,7 +93,7 @@ export default function Navbar() {
               isActive ? "nav-link active" : "nav-link"
             }
           >
-            <FaClock className="nav-icon" /> Waiting Display
+            <FaClock className="nav-icon" /> WD
           </NavLink>
         </li>
         <li>
@@ -103,9 +103,18 @@ export default function Navbar() {
               isActive ? "nav-link active" : "nav-link"
             }
           >
-            <FaHospital className="nav-icon" /> Hospital Tracker
+            <FaHospital className="nav-icon" /> HT
           </NavLink>
         </li>
+
+<NavLink
+    to="/mdr-dashboard"
+    className={({ isActive }) =>
+      `nav-link ${isActive ? "active" : ""}`
+    }
+  >
+    🧬 MDR
+  </NavLink>
 
         <li>
   <NavLink
@@ -114,10 +123,9 @@ export default function Navbar() {
       isActive ? "nav-link active" : "nav-link"
     }
   >
-    🧪 Med Waste
+    🧪 MW
   </NavLink>
 </li>
-
 
         {/* Profile Dropdown */}
         <li

@@ -1,0 +1,135 @@
+.mdr-dashboard {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #f3e5f5, #e3f2fd);
+  min-height: 100vh;
+  text-align: center;
+  padding: 30px;
+  animation: fadeIn 1s ease-in;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #283593;
+}
+
+.subtitle {
+  color: #555;
+  margin-bottom: 25px;
+}
+
+/* Upload and Search Controls */
+.top-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.upload-btn {
+  background: linear-gradient(90deg, #1976d2, #512da8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition: 0.3s ease;
+}
+
+.upload-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #1565c0, #4527a0);
+}
+
+.search-box {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 250px;
+  font-size: 1rem;
+}
+
+/* Table */
+.table-container {
+  overflow-x: auto;
+}
+
+.patient-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.patient-table th {
+  background: #512da8;
+  color: white;
+  padding: 12px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.patient-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.patient-table tr:hover {
+  background: #f5f5f5;
+  transition: 0.3s;
+}
+
+.no-data {
+  padding: 20px;
+  text-align: center;
+  color: #777;
+}
+
+/* Risk badge */
+.risk-pill {
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* Buttons */
+.action-btn {
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  color: white;
+  margin: 0 3px;
+  transition: 0.3s ease;
+}
+
+.action-btn.view {
+  background-color: #0288d1;
+}
+
+.action-btn.delete {
+  background-color: #d32f2f;
+}
+
+.action-btn:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-row {
+  animation: fadeIn 0.6s ease-in;
+}

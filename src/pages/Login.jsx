@@ -6,6 +6,7 @@ import Modal from "../components/Modal";
 import "../styles/Auth.css";
 import { AuthContext } from "../context/AuthContext";
 
+
 export default function Login() {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export default function Login() {
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const passOk = password.length >= 6;
 
-  const doLogin = (e) => {
+   const doLogin = (e) => {
     e.preventDefault();
     if (!emailOk || !passOk) return;
 
