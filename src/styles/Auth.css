@@ -6,13 +6,7 @@
   align-items: center;
   font-family: 'Inter', sans-serif;
   padding: 2rem;
-  background: linear-gradient(135deg,#f0f4f8,#d9e2ec);
-  transition: all 0.5s ease;
-}
-
-.dark-mode {
-  background: linear-gradient(135deg,#1a1b2f,#2c2d4a);
-  color: #fff;
+  background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
 }
 
 /* ===== Toast Notifications ===== */
@@ -22,7 +16,7 @@
   left: 50%;
   transform: translateX(-50%);
   background: #4ade80;
-  color: #000;
+  color: #fff;
   padding: 0.8rem 1.5rem;
   border-radius: 9999px;
   font-weight: 500;
@@ -32,40 +26,23 @@
 }
 
 @keyframes fadeInOut {
-  0% {opacity:0; transform:translateY(-20px);}
-  10%,90% {opacity:1; transform:translateY(0);}
-  100% {opacity:0; transform:translateY(-20px);}
+  0% { opacity: 0; transform: translateY(-20px); }
+  10%, 90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
 }
 
 /* ===== Card ===== */
 .auth-card {
-  background: rgba(255,255,255,0.95);
+  background: #ffffff;
   border-radius: 2rem;
-  padding: 2.5rem;
+  padding: 2.5rem 2rem;
   width: 100%;
-  max-width: 450px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-  position: relative;
+  max-width: 420px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: all 0.3s ease;
-}
-
-.dark-mode .auth-card {
-  background: rgba(20,21,40,0.85);
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-/* ===== Theme Toggle ===== */
-.theme-toggle {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: inherit;
 }
 
 /* ===== Titles ===== */
@@ -74,13 +51,15 @@
   font-weight: 700;
   text-align: center;
   margin-bottom: 0.5rem;
+  color: #0077b6;
 }
 
 .subtitle {
   text-align: center;
-  opacity: 0.7;
+  opacity: 0.8;
   margin-bottom: 2rem;
   font-size: 0.95rem;
+  color: #555;
 }
 
 /* ===== Form ===== */
@@ -95,29 +74,30 @@
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-  width: 100%;
 }
 
-.form-group input {
+.form-group label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
   padding: 0.85rem 1rem;
   border-radius: 1rem;
   border: 1px solid #ccc;
   outline: none;
   transition: all 0.3s ease;
   width: 100%;
-  background: #fff;
+  font-size: 0.95rem;
   color: #111;
 }
 
-.form-group input:focus {
-  border-color: #6366f1;
-  box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
-}
-
-.dark-mode .form-group input {
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
-  color: #fff;
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #0077b6;
+  box-shadow: 0 0 6px rgba(0, 119, 182, 0.3);
 }
 
 /* ===== Password Field ===== */
@@ -131,22 +111,20 @@
   right: 1rem;
   transform: translateY(-50%);
   cursor: pointer;
-  color: inherit;
+  color: #555;
   user-select: none;
 }
 
-.caps-warning {
-  font-size: 0.75rem;
-  color: #facc15;
-  margin-top: 0.2rem;
+/* ===== Role Dropdown ===== */
+.role-group {
+  margin-bottom: 0.5rem;
 }
 
-/* ===== Remember Me ===== */
-.remember-group {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
+.role-group select {
+  appearance: none;
+  background: #fff url("data:image/svg+xml;utf8,<svg fill='black' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>") no-repeat right 12px center;
+  background-size: 16px;
+  cursor: pointer;
 }
 
 /* ===== Buttons ===== */
@@ -155,14 +133,19 @@
   border-radius: 1rem;
   border: none;
   cursor: pointer;
-  background: #6366f1;
+  background: #0077b6;
   color: #fff;
   font-weight: 600;
   transition: all 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+}
+
+.auth-form button:hover {
+  background: #005f8a;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
 
 .auth-form button:disabled {
@@ -170,110 +153,31 @@
   cursor: not-allowed;
 }
 
-.auth-form button:hover:not(:disabled) {
-  background: #4f46e5;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-}
-
-/* ===== Google Login ===== */
-.google-login {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background: #ea4335;
-  color: #fff;
-  font-weight: 600;
-  border-radius: 1rem;
-  padding: 0.85rem;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.google-login:hover {
-  background: #c1351e;
-}
-
-.google-login img.google-icon {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-}
-
 /* ===== Links ===== */
 .auth-links {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   font-size: 0.85rem;
   margin-top: 0.5rem;
-  width: 100%;
 }
 
-.auth-links button {
-  background: none;
-  border: none;
-  color: #6366f1;
-  cursor: pointer;
-  transition: all 0.2s ease;
+.auth-links a {
+  color: #0077b6;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 4px;
 }
 
-.auth-links button:hover {
+.auth-links a:hover {
   text-decoration: underline;
 }
 
-/* ===== Back Button in Modals ===== */
-.back-btn {
-  background: #e5e7eb;
-  color: #111;
-  padding: 0.5rem 1rem;
-  border-radius: 0.75rem;
-  border: none;
-  cursor: pointer;
-  margin-top: 0.5rem;
-  width: 100%;
-  font-weight: 600;
-}
-
-.back-btn:hover {
-  background: #d1d5db;
-}
-
-/* Role Dropdown */
-.role-group {
-  margin-bottom: 18px;
-}
-
-.role-group label {
-  display: block;
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: var(--text-color, #333);
-}
-
-.role-group select {
-  width: 100%;
-  padding: 10px 12px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  background: #fff url("data:image/svg+xml;utf8,<svg fill='black' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>") no-repeat right 10px center;
-  background-size: 16px;
-  appearance: none;
-  cursor: pointer;
-  transition: border 0.3s ease, box-shadow 0.3s ease;
-}
-
-.role-group select:focus {
-  border-color: #0077b6;
-  box-shadow: 0 0 6px rgba(0, 119, 182, 0.3);
-}
-
-
 /* ===== Responsive ===== */
 @media (max-width: 480px) {
-  .auth-card { padding: 2rem 1.5rem; }
-  .auth-card h1 { font-size: 1.8rem; }
+  .auth-card {
+    padding: 2rem 1.5rem;
+  }
+  .auth-card h1 {
+    font-size: 1.8rem;
+  }
 }

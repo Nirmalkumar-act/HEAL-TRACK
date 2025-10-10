@@ -1,10 +1,16 @@
-// src/App.jsx
 import React, { useEffect, useContext } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { AuthContext } from "./context/AuthContext";
+
+// Components
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 // Pages
 import Home from "./pages/Home";
@@ -21,18 +27,19 @@ import HospitalTracker from "./pages/HospitalTracker";
 import NearbyHospitals from "./pages/NearbyHospitals";
 import GantradeCard from "./pages/GantradeCard";
 import QRScanner from "./pages/QRScanner";
-import Login from "./pages/Login";
 import MedWaste from "./pages/MedWaste";
 import MDRDashboard from "./pages/MDRDashboard";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup"; // ✅ added
 
-// Protected Route
+// 🔒 Protected Route Wrapper
 const ProtectedRoute = ({ children }) => {
   const { isLoggedIn } = useContext(AuthContext);
-  return isLoggedIn ? children : <Navigate to="/login" />;
+  return isLoggedIn ? children : <Navigate to="/login" replace />;
 };
 
 function App() {
-  // ✅ Google Translate Script - fixed duplication
+  // ✅ Google Translate script loader (only loads once)
   useEffect(() => {
     if (!window.googleTranslateElementInit) {
       window.googleTranslateElementInit = () => {
@@ -63,7 +70,10 @@ function App() {
     <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
       <Router>
         <div className="app-wrapper flex flex-col min-h-screen bg-gray-50">
-          <Navbar />
+          {/* ✅ Show Navbar only when logged in */}
+          <AuthContentWrapper>
+            <Navbar />
+          </AuthContentWrapper>
 
           {/* 🌍 Google Translate Dropdown */}
           <div
@@ -71,39 +81,163 @@ function App() {
             className="translate-container w-full text-center p-2 bg-blue-50 shadow-md"
           ></div>
 
+          {/* Main Content */}
           <main className="main-content flex-1 p-4">
             <Routes>
-              {/* Public */}
+              {/* Public Routes */}
               <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
 
-              {/* Protected */}
-              <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-              <Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
-              <Route path="/emergency" element={<ProtectedRoute><Emergency /></ProtectedRoute>} />
-              <Route path="/services" element={<ProtectedRoute><Services /></ProtectedRoute>} />
-              <Route path="/booking" element={<ProtectedRoute><Booking /></ProtectedRoute>} />
-              <Route path="/scan" element={<ProtectedRoute><ScanId /></ProtectedRoute>} />
-              <Route path="/review" element={<ProtectedRoute><PatientReview /></ProtectedRoute>} />
-              <Route path="/dashboard" element={<ProtectedRoute><DoctorDashboard /></ProtectedRoute>} />
-              <Route path="/confirmation" element={<ProtectedRoute><Confirmation /></ProtectedRoute>} />
-              <Route path="/waiting" element={<ProtectedRoute><WaitingDisplay /></ProtectedRoute>} />
-              <Route path="/tracker" element={<ProtectedRoute><HospitalTracker /></ProtectedRoute>} />
-              <Route path="/nearby" element={<ProtectedRoute><NearbyHospitals /></ProtectedRoute>} />
-              <Route path="/gantrade" element={<ProtectedRoute><GantradeCard /></ProtectedRoute>} />
-              <Route path="/qrscanner" element={<ProtectedRoute><QRScanner /></ProtectedRoute>} />
-              <Route path="/medwaste" element={<ProtectedRoute><MedWaste /></ProtectedRoute>} />
-              <Route path="/mdr-dashboard" element={<ProtectedRoute><MDRDashboard /></ProtectedRoute>} />
+              {/* Protected Routes */}
+              <Route
+                path="/"
+                element={
+                  <ProtectedRoute>
+                    <Home />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/about"
+                element={
+                  <ProtectedRoute>
+                    <About />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/emergency"
+                element={
+                  <ProtectedRoute>
+                    <Emergency />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/services"
+                element={
+                  <ProtectedRoute>
+                    <Services />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/booking"
+                element={
+                  <ProtectedRoute>
+                    <Booking />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/scan"
+                element={
+                  <ProtectedRoute>
+                    <ScanId />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/review"
+                element={
+                  <ProtectedRoute>
+                    <PatientReview />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <DoctorDashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/confirmation"
+                element={
+                  <ProtectedRoute>
+                    <Confirmation />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/waiting"
+                element={
+                  <ProtectedRoute>
+                    <WaitingDisplay />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/tracker"
+                element={
+                  <ProtectedRoute>
+                    <HospitalTracker />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/nearby"
+                element={
+                  <ProtectedRoute>
+                    <NearbyHospitals />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/gantrade"
+                element={
+                  <ProtectedRoute>
+                    <GantradeCard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/qrscanner"
+                element={
+                  <ProtectedRoute>
+                    <QRScanner />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/medwaste"
+                element={
+                  <ProtectedRoute>
+                    <MedWaste />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/mdr-dashboard"
+                element={
+                  <ProtectedRoute>
+                    <MDRDashboard />
+                  </ProtectedRoute>
+                }
+              />
 
-              {/* Fallback */}
+              {/* Catch-all fallback */}
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </main>
 
-          <Footer />
+          {/* ✅ Show footer only when logged in */}
+          <AuthContentWrapper>
+            <Footer />
+          </AuthContentWrapper>
         </div>
       </Router>
     </GoogleOAuthProvider>
   );
+}
+
+// ✅ Helper: Hide Navbar/Footer when not logged in
+function AuthContentWrapper({ children }) {
+  const { isLoggedIn } = useContext(AuthContext);
+  if (!isLoggedIn) return null;
+  return children;
 }
 
 export default App;
